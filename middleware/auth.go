@@ -38,5 +38,5 @@ func GetUsername(r *http.Request) string {
 	if username, ok := r.Context().Value("Username").(string); ok {
 		return username
 	}
-	return 0
+	return ""
 }
