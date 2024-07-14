@@ -115,9 +115,11 @@ func ChangePasswordHandler(db *gorm.DB) http.HandlerFunc {
 		}
 
 		// Get current user
-		userID := middleware.GetUserID(r)
+		username := middleware.GetUsername(r)
 		var user models.User
-		db.First(&user, userID)
+		if err := db.Where("username = ?", username).First(&user).Error; err != nil {
+			log.Fatalf("failed to retrieve user: %v", err)
+		}
 
 		// Verify old password
 		if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(changePasswordRequest.OldPassword)); err != nil {

@@ -34,9 +34,9 @@ func AuthMiddleware(next http.Handler) http.Handler {
 	})
 }
 
-func GetUserID(r *http.Request) uint {
-	if userID, ok := r.Context().Value("userID").(uint); ok {
-		return userID
+func GetUsername(r *http.Request) string {
+	if username, ok := r.Context().Value("Username").(string); ok {
+		return username
 	}
 	return 0
 }
