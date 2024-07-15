@@ -28,3 +28,8 @@ List endpoint
         "old_password": "123456", 
         "new_password": "1234567"
     }
+
+Database Details
+DB_NAME = myapp
+DB_USER = myappuser
+DB_PASSWORD = yourpassword
